@@ -1,0 +1,7 @@
+<div>
+  <div *ngFor="let movie of movies" style="margin-left: 19.5px; margin-bottom: 20px" >
+    <input class="moviePoster" type="image" (click)="toMovie(movie.id)" [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" style="width: 150px; height: 225px"/>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

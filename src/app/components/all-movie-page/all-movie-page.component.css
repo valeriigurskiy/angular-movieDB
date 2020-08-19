@@ -1,0 +1,12 @@
+div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.moviePoster{
+  transition: 1s;
+}
+.moviePoster:hover {
+   transform: scale(1.2);
+ }

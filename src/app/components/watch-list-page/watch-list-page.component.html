@@ -1,0 +1,7 @@
+<div *ngFor="let poster_path of movie" >
+  <div style="margin-left: 100px; margin-bottom: 20px" class="showDeleteButton">
+    <input type="image" [src]="'https://image.tmdb.org/t/p/w500/' + poster_path" style="max-width: 200px; max-height: 300px"/>
+  </div>
+  <button style="background: green; color: white; width: 30px; height: 30px; margin-left: -55%; margin-top: 75%"  ngbPopover="Watched" triggers="mouseenter:mouseleave" (click)="watchedMovie(poster_path)">✅</button>
+  <button style="background: red; width: 30px; height: 30px; margin-top: 75%" ngbPopover="Delete" triggers="mouseenter:mouseleave" (click)="deleteMovie(poster_path)">❌</button>
+</div>

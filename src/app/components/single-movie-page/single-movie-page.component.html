@@ -1,0 +1,60 @@
+<div style="margin-left: 100px;">
+  <div style="font-size: 24px">{{movie.title}} ({{sliceDate(movie.release_date)}})</div>
+  <ng-template #t let-fill="fill">
+  <span class="star" [class.full]="fill === 100">
+    <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+  </span>
+  </ng-template>
+  <ngb-rating [(rate)]="currentRate" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+<div>
+  <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" style="width: 300px; height: 450px"/>
+</div>
+  <button style="width: 300px; margin-top: 10px; background: green; color: white" (click)="addMovieToWatchList(movie)">Add to watch list</button>
+  <br/>
+  <button style="width: 300px; margin-top: 10px; background: red; color: white" (click)="deleteFromWatchList(movie)">Delete from watch list</button>
+  <br/>
+  <a href='https://www.imdb.com/title/{{movie.imdb_id}}/' target="_blank"><img src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/171_Imdb_logo_logos-256.png" style="width: 50px; height: 50px"/></a>
+    <div style="margin-left: 340px; margin-top: -540px">
+      <ngb-tabset type="pills">
+        <ngb-tab title="Basic Information">
+          <ng-template ngbTabContent>
+            <br/>
+            <div>Title: {{movie.title}}</div>
+            <br/>
+            <div style="width: 300px;">Overview: {{movie.overview}}</div>
+            <br/>
+            <div>Budget: {{budgetSetup(movie.budget)}}</div>
+            <br/>
+            <div>Release date: {{movie.release_date}}</div>
+            <br/>
+            <div>Runtime: {{runtime(movie.runtime)}}</div>
+            <br/>
+            <div>Country: {{movie.production_countries[0].name}}</div>
+          </ng-template>
+        </ngb-tab>
+
+
+        <ngb-tab>
+          <ng-template ngbTabTitle>Genres</ng-template>
+          <ng-template ngbTabContent>
+            <br/>
+            <div *ngFor="let genre of movie.genres" style="color: green">
+              {{genre.name}}
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab>
+          <ng-template ngbTabTitle>Product companies</ng-template>
+          <ng-template ngbTabContent>
+            <br/>
+            <div *ngFor="let company of movie.production_companies">
+              {{company.name}}
+              {{company.origin_country}}
+            </div>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
+</div>
+
